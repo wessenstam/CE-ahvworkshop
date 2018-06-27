@@ -1,51 +1,83 @@
 .. Adding labels to the beginning of your lab is helpful for linking to the lab from other pages
-.. _example_lab_1:
+.. _network_conf:
 
--------------
-Example Lab 1
--------------
+---------------------
+Network configuration
+---------------------
 
 Overview
 ++++++++
 
-Here is where we provide a high level description of what the user will be doing during this module. We want to frame why this content is relevant to an SE/Services Consultant and what we expect them to understand after completing the lab.
+To have VMs talking to the outside world as well as to eachother, we need to configure networking. This module is about how to setup networking and have a managed network configuration to it.
 
-Using Text and Figures
+Create a virtual network
 ++++++++++++++++++++++
 
-Label sections appropriately, see existing labs if further guidance is required. Section titles should begin with present tense verbs to queue what is being done in each section. Use consistent markup for titles, subtitles, sub-subtitles, etc. The markup in the example can serve as a guide but other characters can be used within a given workshop, as long as they are consistent. Other than lab titles (that need to follow a certain linear progression) avoid numbering steps.
+While still in the PRISM interface, if not open *https://<NUTANIX-CLUSTER-IP>:9440* in your browser to access Prism and log in as a user with administrative priveleges,
+change the View to **VM** and click **Network Config** on the right side of the screen. We need networking, so we need to create virtual networks first.
 
-Below are examples of standards we should strive to maintain in writing lab guides. *Italics* is used to indicate when information of values external to the lab guide are referenced. **Bold** is used to reference words and phrases in the UI. **Bold** should also be used to highlight the key name in lists containing key/value pairs as shown below. The **>** character is used to show a reasonable progression of clicks, such as traversing a drop down menu. When appropriate, try to consolidate short, simple tasks. ``Literals`` should be used for file paths.
+.. #TODO: Need to check the right screens due to backend of VM end networking has been introduceed since 5.5. Also the network configuration screen has changed.
 
-Actions should end with a period, or optionally with a colon as in the case of displaying a list of fields that need to be populated. Keep the language consistent: open, click/select, fill out, log in, and execute.
+.. figure:: images/0.png
 
-Use the **figure** directive to include images in your lab guide or appendix. Image files should be included within the Git repository, within an **images** subdirectory within each lab subdirectory.
-
------------------------------------------------------
-
-Open \https://<*NUTANIX-CLUSTER-IP*>:9440 in your browser to access Prism. Log in as a user with administrative priveleges.
+In the **VM** screen hit the **+ Create Network** button to create a new virtual network.
 
 .. figure:: images/1.png
 
-Click **Network Config > User VM Interfaces > + Create Network**.
+Fill the needed fields (use the below value as an example):
+
+**Name: vlan0**
+
+**VLAN ID: 0**
 
 .. figure:: images/2.png
 
-Select **Enable IP Address Management** and fill out the following fields:
-
-  - **Name** - VM VLAN
-  - **VLAN ID** - *Refer to your Environment Details Worksheet*
-  - **Network IP Address/Prefix Length** - *Refer to your Environment Details Worksheet*
-  - **Gateway IP Address** - *Refer to your Environment Details Worksheet*
-  - **Domain Name Servers** - *Refer to your Environment Details Worksheet*
+Check the **ENABLE IP ADDRESS MANAGEMENT** checkbox to see what else can be configured in the virtual network. Use again as an example the values in the screenshots
 
 .. figure:: images/3.png
 
-Click **Submit > Save**.
+.. figure:: images/4.png
+
+.. note:: Only use **one** IP address in the *DOMAIN NAME SERVERS (COMMA SEPERATED)* field!
+
+.. figure:: images/5.png
+
+To create a DHCP-Pool in the virtual network, click the **+ Create Pool** button and use the below values again as an example
+
+.. figure:: images/6.png
+
+When done, click the **Submit** button
+
+The screen should now look like the below screenshot. Now click the **Submit** again to get the virtual network created in the AHV environment including the define DHCP settings.
+
+.. figure:: images/7.png
+
+.. note:: The DHCP settings will only be available in the virtualized environment. Other machines outside of the cluster will **not** recieve any DHCP IP addresses from the defined scope.
+
+
+From the top a screen should drop down to tell that the network has been created, and the **Network Configuration** screen should show the just created network with its UUID and name. If you want to change anything just click the Pencil Icon right to the name of the virtual network.
+
+.. figure:: images/8.png
+
+Create at least three extra networks for VLANs 10,21 and 100 using the above methods. Just create the network using the default settings.
+
+.. note:: After creating the networks, all network configurations will be \"pushed\" to all the current and new AHV nodes in the cluster. **Nothing** needs to be done.
+
+-----------------------------------------------------
 
 Takeaways
 +++++++++
 
-- Here is where we summarize any key takeaways from the module
-- Such as how a Nutanix feature used in the lab delivers value
-- Or highlighting a differentiator
+* Ease of creating
+
+  - networks in AHV
+
+  - a DHCP server and corresponding scope
+
+* Ease of modifing
+
+  - The DHCP scope
+
+  - VLAN of the created network
+
+.. #TODO: Check this changing Takeaways!

@@ -1,30 +1,45 @@
 .. title:: Introduction to Acropolis Hypervisor using the free Community Edition of Nutanix
 
-.. #TODO: Create the right listings
+.. #DOING: Create the right listings
+.. #TODO: AFS, Import into AHV, Export from AHV
 
 .. toctree::
   :maxdepth: 2
-  :caption: Image Configuration
-  :name: _imageconf
+  :caption: Basic Workshop
+  :name: _basicworkshop
   :hidden:
 
-  Image_configuration
+  Storage_basic/storage_basic
+  Network_Config/network_config
+  Image_configuration/image_config
+  VM/vm
+  IO_Metric/io_metric
+  VM_Clone/vm_clone
+  Switch_add/switch_add
+  Network_Visualization/network_viz
+  AD_Integration/ad_integration
+  SSP/ssp
+  SSR/ssr
+  ABS/abs
 
 .. toctree::
   :maxdepth: 2
-  :caption: Network Configuration
-  :name: _networkconf
+  :caption: Replication
+  :name: _replication
   :hidden:
 
- Network_Config
+  Replication/replication
 
 .. toctree::
   :maxdepth: 2
-  :caption: Active Directory Integration
-  :name: _adintegration
+  :caption: Advance Workshop
+  :name: _advworkshop
   :hidden:
 
-  AD_Integratie
+  Advanced_Networking/adv_network
+  VM_Script/vm_script
+  VM_Clone_Script/vm_clone_script
+  Import_into_AHV/import_into_ahv
 
 
 
@@ -34,10 +49,6 @@
 ---------------
 Getting Started
 ---------------
-
-
-
-
 
 Welcome to the Nutanix Acropolis Hypervisor (AHV) based on Nutanix's CE version! This workbook provides self-paced instruction and exercises that introduce Nutanix AHV based on the CE version. You will work through multiple parts of what makes an AHV environment.
 
@@ -71,8 +82,6 @@ VyOS                192.168.100.254 NAT and PAT Router
 
 CE Information
 ++++++++++++++
-To get access to the CE version 'click here <a href="https://www.nutanix.com/products/register/">'. This link also allows you to use the CE version. Yes we still need a license, but there are **no costs** for that use...
+To get access to the CE version click `here <https://www.nutanix.com/products/register/>`_. This link also allows you to use the CE version. Yes we still need a license, but there are **no costs** for that use...
 
-.. note:: As there is a lot of information in the internet how to install Nutanix CE we will not cover that. If you want to know how to install it in a nested environment, please search google on Nested Nutanix CE and you'll find multiple sites. 'An example <a href="https://www.viktorious.nl/2018/05/03/run-nutanix-ce-nested-on-vmware-esxi-6-5-solving-some-of-the-challenges-you-will-face/">'
-
-**Partners** - Choose **My Nutanix Login**
+.. note:: As there is a lot of information in the internet how to install Nutanix CE we will not cover that. If you want to know how to install it in a nested environment, please search google on Nested Nutanix CE and you'll find multiple sites. An example can be found `here <https://www.viktorious.nl/2018/05/03/run-nutanix-ce-nested-on-vmware-esxi-6-5-solving-some-of-the-challenges-you-will-face/>`_
