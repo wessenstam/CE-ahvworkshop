@@ -1,0 +1,1 @@
+plink -ssh -P 22 -l root -pw password root@10.204.96.116 "esxcfg-vswitch -A VLAN_1002 vSwitch0 && esxcfg-vswitch -p VLAN_1002 -v 1002 vSwitch0 && esxcfg-vswitch -A VLAN_4004 vSwitch0 && esxcfg-vswitch -p VLAN_4004 -v 4004 vSwitch0 && esxcfg-vswitch -l" 
