@@ -1,8 +1,8 @@
 .. title:: Introduction to Acropolis Hypervisor using the free Community Edition of Nutanix
 
 <<<<<<< HEAD
-.. #DOING: Create the right listings
-.. #TODO: AFS, Import into AHV, Export from AHV
+.. #DOING: Create the right listings id:2
+.. #TODO: AFS, Import into AHV, Export from AHV id:3
 =======
 .. #TODO: Create the right listings id:0
 >>>>>>> 528ad13abf08e5b0b5a18afb182a327d4cc316e8
