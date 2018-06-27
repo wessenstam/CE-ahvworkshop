@@ -55,7 +55,7 @@ Welcome to the Nutanix Acropolis Hypervisor (AHV) based on Nutanix's CE version!
 What's New
 ++++++++++
 
-- Initial Version (6/27/18)
+- Initial Version (6/27/18) Willlem Essenstam
 
 Environmental overview
 ++++++++++++++++++++++
