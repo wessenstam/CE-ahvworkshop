@@ -1,5 +1,7 @@
 .. title:: Introduction to Acropolis Hypervisor using the free Community Edition of Nutanix
 
+.. #TODO: Create the right listings
+
 .. toctree::
   :maxdepth: 2
   :caption: Image Configuration
@@ -24,11 +26,18 @@
 
   AD_Integratie
 
+
+
 .. _getting_started:
+
 
 ---------------
 Getting Started
 ---------------
+
+
+
+
 
 Welcome to the Nutanix Acropolis Hypervisor (AHV) based on Nutanix's CE version! This workbook provides self-paced instruction and exercises that introduce Nutanix AHV based on the CE version. You will work through multiple parts of what makes an AHV environment.
 
