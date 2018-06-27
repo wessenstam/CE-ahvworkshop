@@ -16,7 +16,7 @@ Create a virtual network
 While still in the PRISM interface, if not open *https://<NUTANIX-CLUSTER-IP>:9440* in your browser to access Prism and log in as a user with administrative priveleges,
 change the View to **VM** and click **Network Config** on the right side of the screen. We need networking, so we need to create virtual networks first.
 
-.. #TODO: Need to check the right screens due to backend of VM end networking has been introduceed since 5.5. Also the network configuration screen has changed.
+.. #TODO: Need to check the right screens due to backend of VM end networking has been introduceed since 5.5. Also the network configuration screen has changed. id:4
 
 .. figure:: images/0.png
 
@@ -80,4 +80,4 @@ Takeaways
 
   - VLAN of the created network
 
-.. #TODO: Check this changing Takeaways!
+.. #TODO: Check this changing Takeaways! id:1
