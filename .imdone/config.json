@@ -17,7 +17,8 @@
       "XXX",
       "IDEA",
       "NOTE",
-      "REVIEW"
+      "REVIEW",
+      "MARK"
     ]
   },
   "lists": [
@@ -37,5 +38,10 @@
     "pedantic": false,
     "smartLists": true,
     "langPrefix": "language-"
+  },
+  "sync": {
+    "id": "5b337c06169f8f7c6702cf7f",
+    "name": "wessenstam/CE-ahvworkshop",
+    "useImdoneioForPriority": true
   }
 }
