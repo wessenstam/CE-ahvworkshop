@@ -6,7 +6,7 @@
   :name: _imageconf
   :hidden:
 
-  Image\ configuration
+  Image_configuration
 
 .. toctree::
   :maxdepth: 2
@@ -14,7 +14,7 @@
   :name: _networkconf
   :hidden:
 
- Network\ Config
+ Network_Config
 
 .. toctree::
   :maxdepth: 2
@@ -22,7 +22,7 @@
   :name: _adintegration
   :hidden:
 
-  AD\ Integratie
+  AD_Integratie
 
 .. _getting_started:
 
@@ -40,34 +40,25 @@ What's New
 Environmental overview
 ++++++++++++++++++++++
 
-Th CE environment is a **free version** of the Nutanix software. It can be nested in an ESXi 6.0 U3 and up VMware environment or run as bare-metal. In our workshop we run the CE version as a nested VM in an isolated VLAN. You will be accessing this network via a RDP session to a Windows workstation on which all the needed tools are installed. 
+Th CE environment is a **free version** of the Nutanix software. It can be nested in an ESXi 6.0 U3 and up VMware environment or run as bare-metal. In our workshop we run the CE version as a nested VM in an isolated VLAN. You will be accessing this network via a RDP session to a Windows workstation on which all the needed tools are installed.
 
-In each VLAN there are the following machines, IP addresses and their functions:
-+--------------------------+-------------------+-------------------+
-| Name of the machine.     | IP Address.       | Function.         |
-+==========================+===================+===================+
-| DC1.                     | 192.168.100.1.    | Domain Controller |
-+--------------------------+-------------------+-------------------+
-| WKS1.                    | 192.168.100.10.   | Workstation/RDP.  |
-+--------------------------+-------------------+-------------------+
-| AHV-CE1.                 | 192.168.100.21.   | AHV for the CE-1. |
-+--------------------------+-------------------+-------------------+
-| AHV-CE2.                 | 192.168.100.22.   | AHV for the CE-2. |
-+--------------------------+-------------------+-------------------+
-| AHV-CE3.                 | 192.168.100.23.   | AHV for the CE-3. |
-+--------------------------+-------------------+-------------------+
-| AHV-CE4.                 | 192.168.100.24.   | AHV for the CE-4. |
-+--------------------------+-------------------+-------------------+
-| CVM-CE1                  | 192.168.100.31.   | CVM-CE1           |
-+--------------------------+-------------------+-------------------+
-| CVM-CE2                  | 192.168.100.31.   | CVM-CE2           |
-+--------------------------+-------------------+-------------------+
-| CVM-CE3                  | 192.168.100.31.   | CVM-CE3           |
-+--------------------------+-------------------+-------------------+
-| CVM-CE4                  | 192.168.100.31.   | CVM-CE4           |
-+--------------------------+-------------------+-------------------+
-| VyOS                     | 192.168.100.254   | Nat\/Pat Router.  |
-+--------------------------+-------------------+-------------------+
+In each VLAN there are the following machines, IP addresses and their functions
+
+=================== =============== ==================
+Name of the machine IP Address      Function
+=================== =============== ==================
+DC-1                192.168.100.1   Domain Controller
+WKS1                192.168.100.10  Workstation/RDP
+AHV-CE1             192.168.100.21  AHV for CE-1
+AHV-CE1             192.168.100.21  AHV for CE-1
+AHV-CE1             192.168.100.21  AHV for CE-1
+AHV-CE1             192.168.100.21  AHV for CE-1
+CVM-CE1             192.168.100.31  CVM for CE-1
+CVM-CE1             192.168.100.31  CVM for CE-1
+CVM-CE1             192.168.100.31  CVM for CE-1
+CVM-CE1             192.168.100.31  CVM for CE-1
+VyOS                192.168.100.254 NAT and PAT Router
+=================== =============== ==================
 
 CE Information
 ++++++++++++++
