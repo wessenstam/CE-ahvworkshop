@@ -131,21 +131,25 @@ Open the **Image Configuration** page.
 .. figure:: images/Sizer0029c.png
 
 Follow the earlier process while creating the Linux VM to upload two files (location is provided by the instructor):
-1. Windows 2012 R2 ISO image
-2. VirtIO driver ISO image
+
+#. Windows 2012 R2 ISO image
+#. VirtIO driver ISO image
+
 
 The later ISO image is needed to provide the Windows installer media the right drivers to access the drive we will create. As AHV uses a KVM bases, we need to provide de VirtIO drivers. Microsoft doesn't have these on board on the installation media.
 
 After you have uploaded the two ISO images you can proceed to create the VM like the Linux VM earlier.
 Create the Windows VM with the following parameters:
+
 1. **NAME**: WinVM-<CLUSTERNAME>
-2. **vCPU(s)**: 1
-3. **Number of Cores per vCPU**: 2
-4. **Memory**: 2GB
-5. **NIC**: 1, assigned to one of the earlier created networks
-6. **Disk**: 40GB
-7. **CDROM-1**: Windows 2012 R2 ISO; Clone from Image Services
-8. **CDROM-2**: Nutanix VirtIO ISO; Clone from Image Services
+#. **vCPU(s)**: 1
+#. **Number of Cores per vCPU**: 2
+#. **Memory**: 2GB
+#. **NIC**: 1, assigned to one of the earlier created networks
+#. **Disk**: 40GB
+#. **CDROM-1**: Windows 2012 R2 ISO; Clone from Image Services
+#. **CDROM-2**: Nutanix VirtIO ISO; Clone from Image Services
+
 
 After saving the VM, start it and click the **Launch Console** button after the link because active.
 
