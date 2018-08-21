@@ -47,5 +47,12 @@
     "id": "5b337c06169f8f7c6702cf7f",
     "name": "wessenstam/CE-ahvworkshop",
     "useImdoneioForPriority": true
+  },
+  "meta": {
+    "gh": {
+      "urlTemplate": "https://github.com/wessenstam/CE-ahvworkshop/issues/%s",
+      "titleTemplate": "View github issue %s",
+      "icon": "icon-octoface"
+    }
   }
 }
