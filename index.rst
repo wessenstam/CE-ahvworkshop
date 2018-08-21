@@ -86,13 +86,13 @@ Name of the machine IP Address      Function
 DC-1                192.168.100.1   Domain Controller
 WKS1                192.168.100.10  Workstation/RDP
 AHV-CE1             192.168.100.21  AHV for CE-1
-AHV-CE1             192.168.100.21  AHV for CE-1
-AHV-CE1             192.168.100.21  AHV for CE-1
-AHV-CE1             192.168.100.21  AHV for CE-1
+AHV-CE2             192.168.100.22  AHV for CE-2
+AHV-CE3             192.168.100.23  AHV for CE-3
+AHV-CE4             192.168.100.24  AHV for CE-4
 CVM-CE1             192.168.100.31  CVM for CE-1
-CVM-CE1             192.168.100.31  CVM for CE-1
-CVM-CE1             192.168.100.31  CVM for CE-1
-CVM-CE1             192.168.100.31  CVM for CE-1
+CVM-CE2             192.168.100.32  CVM for CE-2
+CVM-CE3             192.168.100.33  CVM for CE-3
+CVM-CE4             192.168.100.34  CVM for CE-4
 VyOS                192.168.100.254 NAT and PAT Router
 =================== =============== ==================
 
