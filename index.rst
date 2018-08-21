@@ -1,9 +1,21 @@
 .. title:: Introduction to Acropolis Hypervisor using the free Community Edition of Nutanix
 
 .. #DOING: Create the right listings id:2
+ ----
+ <https://github.com/wessenstam/CE-ahvworkshop/issues/22>
+ Willem Essenstam
+ willem@nutanix.com
 .. #TODO: AFS, Import into AHV, Export from AHV id:3
-=======
+ =======
+ ----
+ <https://github.com/wessenstam/CE-ahvworkshop/issues/23>
+ Willem Essenstam
+ willem@nutanix.com
 .. #TODO: Create the right listings id:0
+ ----
+ <https://github.com/wessenstam/CE-ahvworkshop/issues/20>
+ Willem Essenstam
+ willem@nutanix.com
 
 .. toctree::
   :maxdepth: 2
