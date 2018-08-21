@@ -17,7 +17,11 @@
  Willem Essenstam
  willem@nutanix.com
 
-.. #TODO: Done VM and some modification of modules to show up right in the toctree
+.. #TODO: Done VM and some modification of modules to show up right in the toctree id:18
+ ----
+ <https://github.com/wessenstam/CE-ahvworkshop/issues/28>
+ Willem Essenstam
+ willem@nutanix.com
 
 
 .. toctree::
