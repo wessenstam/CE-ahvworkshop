@@ -17,6 +17,9 @@
  Willem Essenstam
  willem@nutanix.com
 
+.. #TODO: Done VM and some modification of modules to show up right in the toctree
+
+
 .. toctree::
   :maxdepth: 2
   :caption: Basic Workshop
@@ -25,11 +28,9 @@
 
   Storage_basic/storage_basic
   Network_Config/network_config
-  Image_configuration/image_config
   VM/vm
   IO_Metric/io_metric
   VM_Clone/vm_clone
-  Switch_add/switch_add
   Network_Visualization/network_viz
   AD_Integration/ad_integration
   SSP/ssp
@@ -51,6 +52,7 @@
   :hidden:
 
   Advanced_Networking/adv_network
+  Switch_add/switch_add
   VM_Script/vm_script
   VM_Clone_Script/vm_clone_script
   Import_into_AHV/import_into_ahv

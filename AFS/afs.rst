@@ -1,9 +1,9 @@
 .. Adding labels to the beginning of your lab is helpful for linking to the lab from other pages
-.. _example_lab_1:
+.. _afs:
 
--------------
-Example Lab 1
--------------
+-----------------------
+Acropolis File Services
+-----------------------
 
 Overview
 ++++++++
