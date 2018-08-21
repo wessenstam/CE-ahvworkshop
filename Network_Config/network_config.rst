@@ -17,6 +17,10 @@ While still in the PRISM interface, if not open *https://<NUTANIX-CLUSTER-IP>:94
 change the View to **VM** and click **Network Config** on the right side of the screen. We need networking, so we need to create virtual networks first.
 
 .. #TODO: Need to check the right screens due to backend of VM end networking has been introduceed since 5.5. Also the network configuration screen has changed. id:4
+ ----
+ <https://github.com/wessenstam/CE-ahvworkshop/issues/18>
+ Willem Essenstam
+ willem@nutanix.com
 
 .. figure:: images/0.png
 
@@ -81,3 +85,7 @@ Takeaways
   - VLAN of the created network
 
 .. #TODO: Check this changing Takeaways! id:1
+ ----
+ <https://github.com/wessenstam/CE-ahvworkshop/issues/15>
+ Willem Essenstam
+ willem@nutanix.com
