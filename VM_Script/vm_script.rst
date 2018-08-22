@@ -1,47 +1,89 @@
 .. Adding labels to the beginning of your lab is helpful for linking to the lab from other pages
 .. _vm_script:
 
--------------------------
-Create a VM from a script
--------------------------
+---------------------------
+VM manipulation via scripts
+---------------------------
 
 Overview
 ++++++++
 
-Here is where we provide a high level description of what the user will be doing during this module. We want to frame why this content is relevant to an SE/Services Consultant and what we expect them to understand after completing the lab.
+AHV is very powerful from a scripting interface the so called **acli**. The flowing section is providing some basic scripts/commands that can be used in the **acli** interface.
 
-Using Text and Figures
-++++++++++++++++++++++
+During this module you'll be:
 
-Label sections appropriately, see existing labs if further guidance is required. Section titles should begin with present tense verbs to queue what is being done in each section. Use consistent markup for titles, subtitles, sub-subtitles, etc. The markup in the example can serve as a guide but other characters can be used within a given workshop, as long as they are consistent. Other than lab titles (that need to follow a certain linear progression) avoid numbering steps.
+- Creating a VM using a script
+- Cloning a VM using a script
+- Manipulation of VMs via a script
 
-Below are examples of standards we should strive to maintain in writing lab guides. *Italics* is used to indicate when information of values external to the lab guide are referenced. **Bold** is used to reference words and phrases in the UI. **Bold** should also be used to highlight the key name in lists containing key/value pairs as shown below. The **>** character is used to show a reasonable progression of clicks, such as traversing a drop down menu. When appropriate, try to consolidate short, simple tasks. ``Literals`` should be used for file paths.
+VM Creation
+-----------
 
-Actions should end with a period, or optionally with a colon as in the case of displaying a list of fields that need to be populated. Keep the language consistent: open, click/select, fill out, log in, and execute.
+Connect to the CVM using the IP address of your cluster by using Putty. Use **nutanix** and the **nutanix/4u** as username and password combination.
 
-Use the **figure** directive to include images in your lab guide or appendix. Image files should be included within the Git repository, within an **images** subdirectory within each lab subdirectory.
+After the connection is successful type the following command to create a VM with 1GB of RAM, 1 vCPU and a 10GB disk. For demo purposes the CDROM and the NIC are not used but can be added if wanted.
 
------------------------------------------------------
+``for n in {1..5}
+do
+acli vm.create MyVM$n memory=1024M num_vcpus=1
+acli vm.disk_create MyVM$n create_size=10G container=vms-ce1
+done``
 
-Open \https://<*NUTANIX-CLUSTER-IP*>:9440 in your browser to access Prism. Log in as a user with administrative priveleges.
+.. figure:: images/vmscript_004.png
 
-.. figure:: images/1.png
+This command should lead in having 5 VM’s named MyVM1 to MyVM5 all with the earlier mentioned parameters. The below screen shows all lines returned by the cluster.
 
-Click **Network Config > User VM Interfaces > + Create Network**.
+.. figure:: images/vmscript_005.png
 
-.. figure:: images/2.png
+.. note:: For a full reference to all acli command’s look in the `Application Mobility Fabric guide <https://portal.nutanix.com/#/page/docs/details?targetId=Command-Ref-AOS-v58:man-acli-c.html>`_ on the support site.
 
-Select **Enable IP Address Management** and fill out the following fields:
+PRISM will show all just 5 newly EXTRA created VM’s
 
-  - **Name** - VM VLAN
-  - **VLAN ID** - *Refer to your Environment Details Worksheet*
-  - **Network IP Address/Prefix Length** - *Refer to your Environment Details Worksheet*
-  - **Gateway IP Address** - *Refer to your Environment Details Worksheet*
-  - **Domain Name Servers** - *Refer to your Environment Details Worksheet*
+.. figure:: images/vmscript_006.png
+ 
+VM Cloning
+----------
 
-.. figure:: images/3.png
+Before we can clone machines, we need to get some resources freed-up. So power done the earlier created clone using the UI named ub-srv-cex by using the ``acli vm.off`` command
 
-Click **Submit > Save**.
+.. figure:: images/vmscript_008.png
+
+The PRISM should show a gray coloured icon infront of the VM like below.
+
+.. figure:: images/vmscript_008a.png
+
+Now let’s delete that VM by using the ``acli vm.delete`` command and reply yes to the asked question if you are sure.
+
+.. figure:: images/vmscript_0011.png
+
+Also delete all earlier created MyVM1 till 5 using the ``acli vm.delete MyVM[1-4]`` command like below and reply with yes as well.
+
+.. figure:: images/vmscript_0012.png
+
+In the PRISM UI the VM’s should be gone except for two.
+
+.. figure:: images/vmscript_008a.png
+
+No let’s clone the MyVM5 into 5 new machines called MyVMClone1 to MyVMClone5 by using the ``acli vm.clone`` command as shown below.
+
+.. figure:: images/vmscript_0014.png
+
+PRISM should show
+
+.. figure:: images/vmscript_006.png
+
+Let’s power on the first two just created VM’s by using ``acli vm.on MyVMClone[1..2]`` command. PRISM should show the VM’s with a green ball in front of the VM.
+
+.. figure:: images/vmscript_007.png
+
+Now let’s delete all earlier created VM by using the ``acli vm.delete MyVMClone*`` command using wildcards and answer the question asked with yes.
+
+.. figure:: images/vmscript_0014.png
+
+Only one VM should exist in the cluster.
+
+
+-----------
 
 Takeaways
 +++++++++

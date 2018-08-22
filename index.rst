@@ -29,7 +29,7 @@
  Willem Essenstam
  willem@nutanix.com
 
-<<<<<<< HEAD
+
 .. #TODO: Make sure the screenshots are still working for the current CE version (5.8.1 based) id:19
  ----
  <https://github.com/wessenstam/CE-ahvworkshop/issues/30>
@@ -39,7 +39,7 @@
 .. #TODO: Use IP address range of 192.168.81.0/24!! Create a setup document for the instructors. id:21
  ----
  <https://github.com/wessenstam/CE-ahvworkshop/issues/32>
-=======
+
 .. #TODO: Make sure the screenshots are still working for the current CE version (5.8.1 based) id:23
  ----
  <https://github.com/wessenstam/CE-ahvworkshop/issues/35>
@@ -49,7 +49,6 @@
 .. #TODO: Use IP address range of 192.168.81.0/24!! Create a setup document for the instructors. id:24
  ----
  <https://github.com/wessenstam/CE-ahvworkshop/issues/36>
->>>>>>> 4bc2c717cbd406b97e4e04f3fa6284c1091eec1c
  Willem Essenstam
  willem@nutanix.com
 
@@ -146,4 +145,4 @@ CE Information
 ++++++++++++++
 To get access to the CE version click `here <https://www.nutanix.com/products/register/>`_. This link also allows you to use the CE version. Yes we still need a license, but there are **no costs** for that use...
 
-.. note:: As there is a lot of information in the internet how to install Nutanix CE we will not cover that. If you want to know how to install it in a nested environment, please search google on Nested Nutanix CE and you'll find multiple sites. An example can be found `here <https://www.viktorious.nl/2018/05/03/run-nutanix-ce-nested-on-vmware-esxi-6-5-solving-some-of-the-challenges-you-will-face/>`_
+.. note:: As there is a lot of information in the internet how to install Nutanix CE we will not cover that. If you want to know how to install it in a nested environment, please search google on Nested Nutanix CE and you'll find multiple sites. An example can be found `at <https://www.viktorious.nl/2018/05/03/run-nutanix-ce-nested-on-vmware-esxi-6-5-solving-some-of-the-challenges-you-will-face/>`_
