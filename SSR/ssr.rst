@@ -8,44 +8,122 @@ Self Service Restore
 Overview
 ++++++++
 
-Here is where we provide a high level description of what the user will be doing during this module. We want to frame why this content is relevant to an SE/Services Consultant and what we expect them to understand after completing the lab.
+Backups are very important for organisations all over the world. To quickly restore data you can use the snapshots that can be created with the solution. One of the ways to recover data is using the Self Service Restore feature that is built-in the Nutanix Guest Tool (NGT). This NGT has been installed on the Windows server in an earlier stage of the workshop. If you haven't done so, please make sure that you install the NGT before moving forward with the module. The NGT install can be found in the VM Creation module under the `Create Windows VM part <../VM/vm.html#winvm>`_
 
-Using Text and Figures
-++++++++++++++++++++++
+SSR Tool
+--------
 
-Label sections appropriately, see existing labs if further guidance is required. Section titles should begin with present tense verbs to queue what is being done in each section. Use consistent markup for titles, subtitles, sub-subtitles, etc. The markup in the example can serve as a guide but other characters can be used within a given workshop, as long as they are consistent. Other than lab titles (that need to follow a certain linear progression) avoid numbering steps.
+Login into the Windows VM that we created earleir in the workshop and the NGT tool has been installed.
 
-Below are examples of standards we should strive to maintain in writing lab guides. *Italics* is used to indicate when information of values external to the lab guide are referenced. **Bold** is used to reference words and phrases in the UI. **Bold** should also be used to highlight the key name in lists containing key/value pairs as shown below. The **>** character is used to show a reasonable progression of clicks, such as traversing a drop down menu. When appropriate, try to consolidate short, simple tasks. ``Literals`` should be used for file paths.
+Open the Nutanix SSR tool by double clicking on the Icon on the desktop of the Windows VM
 
-Actions should end with a period, or optionally with a colon as in the case of displaying a list of fields that need to be populated. Keep the language consistent: open, click/select, fill out, log in, and execute.
+.. figure:: images/ssr_001.png
 
-Use the **figure** directive to include images in your lab guide or appendix. Image files should be included within the Git repository, within an **images** subdirectory within each lab subdirectory.
+A login screen should appear. Login as the local **administrator** and password of **nutanix/4u**.
 
------------------------------------------------------
+.. figure:: images/ssr_003.png
 
-Open \https://<*NUTANIX-CLUSTER-IP*>:9440 in your browser to access Prism. Log in as a user with administrative priveleges.
+A **“error” screen** should appear that the VM is not protected and has no snapshots available yet.
 
-.. figure:: images/1.png
+.. figure:: images/ssr_004.png
 
-Click **Network Config > User VM Interfaces > + Create Network**.
+Close the web browser screen.
 
-.. figure:: images/2.png
+Create snapshots
+++++++++++++++++
 
-Select **Enable IP Address Management** and fill out the following fields:
+To create snapshots we have to define a Async DR. This way we create snapshots of VMs in the cluster. These snapshots can then be used by the SSR tool.
 
-  - **Name** - VM VLAN
-  - **VLAN ID** - *Refer to your Environment Details Worksheet*
-  - **Network IP Address/Prefix Length** - *Refer to your Environment Details Worksheet*
-  - **Gateway IP Address** - *Refer to your Environment Details Worksheet*
-  - **Domain Name Servers** - *Refer to your Environment Details Worksheet*
+In the PRISM interface, click on the home button and change to **Data Protection**.
 
-.. figure:: images/3.png
+.. figure:: images/ssr_005.png
 
-Click **Submit > Save**.
+Click the **+ Protection Domain** and then **Async DR**.
+
+.. figure:: images/ssr_006.png
+
+Fill out the requested fields as mentioned below:
+
+- Name of the protection Domain: **SSR-Test**
+- VM to be protected: **Select your Windows VM**
+- Schedule: **Repeat every 60 minutes; keep 2 local snapshots**
+
+Click the **Table** "tab" in the **Data Protection** view. The created Protection Domain (PD) named **SSR-Test** should be shown with a green icon left to it.
+
+.. figure:: images/ssr_0015.png
+
+When selecting the SSR-Test Protection Domain (PD), select the Entities Tab (half way the page) which should show your Windows VM.
+
+.. figure:: images/ssr_0016.png
+
+The Schedule tab should show your created schedule
+
+.. figure:: images/ssr_0018.png
+
+On your Windows VM, create a text file and place it on the desktop. Open the file and provide some content in the file.
+
+.. figure:: images/ssr_0020.png
+.. figure:: images/ssr_0021.png
+
+Return to the PRISM interface and click on the **Take Snapshot** button
+
+.. figure:: images/ssr_0017.png
+
+In the new dialog, select the **RETENTION TIME** and set it to 1 Day.
+
+.. figure:: images/ssr_0019.png
+
+Click on **Save**. A new Snapshot will be created. To see all the snapshots, select the **SSR-Test** PD and click on the **Local Snapshots** Tab.
+
+.. figure:: images/ssr_0022.png
+
+
+In the Windows VM delete the earlier created txt file and empty the Recycle Bin.
+
+Reopen the Nutanix SSR interface. This should now show up with the same amount of snapshots as seen in the PRISM interface.
+
+.. figure:: images/ssr_0023.png
+
+You can also see which sanpshots are available for this week or longer periods by clicking on the periods buttons in the top bar of the screen. The below shows the week as the period.
+
+.. figure:: images/ssr_0024.png
+
+Select the last snapshot to restore the deleted file. Check the **Disk 0**
+
+.. figure:: images/ssr_0025.png
+
+Click on **Disk Action** and select **Mount** from the dropdown box and wait for a few seconds to have the drive mounted.
+
+.. figure:: images/ssr_0027.png
+.. figure:: images/ssr_0028.png
+
+After a completed mount the drive will be shown as another drive letter on a green background.
+
+.. figure:: images/ssr_0029.png
+
+Open the Windows Explorer and navigate to G:\\Users\\Administrators\\Desktop to drag and drop your deleted txt file back to the desktop.
+
+.. figure:: images/ssr_0030.png
+
+Open the file and make sure you have the same file restored by checking the content.
+Change the “backupped” txt file.
+
+While in the Explorer, open the “backupped” txt file and make some changes to the content of the file. Save the file as you would normally do.
+
+Return to the Web Browser and unmount the drive by selecting the **Unmount** from the **Disk Action** menu after selecting the **Disk 0**.
+
+.. figure:: images/ssr_0031.png
+
+Remount the drive using the earlier steps and see what the content of the txt file is.
+
+``Can you provide a use case for this kind of action??``
+
+Unmount the drive again so we don’t use to much resources in our small environment.
+
+--------------
 
 Takeaways
 +++++++++
 
-- Here is where we summarize any key takeaways from the module
-- Such as how a Nutanix feature used in the lab delivers value
-- Or highlighting a differentiator
+- Easy process of mounting snapshots
+- Easy restore files from snapshots

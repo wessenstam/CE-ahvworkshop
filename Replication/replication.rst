@@ -8,44 +8,190 @@ Replication
 Overview
 ++++++++
 
-Here is where we provide a high level description of what the user will be doing during this module. We want to frame why this content is relevant to an SE/Services Consultant and what we expect them to understand after completing the lab.
+For this section you will be working with another cluster to start A-Synchronous replication using two CE installations. Use the below table to get the information needed.
 
-Using Text and Figures
-++++++++++++++++++++++
+=========== ==============  ======================  ==========  =========== ===========
+Clustername IP Address CVM  IP Address Hyper-Visor  VM Name     Container 1 Container 2
+=========== ==============  ======================  ==========  =========== ===========
+CE1         192.168.81.31   192.168.81.21           ub-srv-ce1  vms-ce1     DR-vms-ce2
+CE2         192.168.81.32   192.168.81.22           ub-srv-ce2  vms-ce2     DR-vms-ce1
+=========== ==============  ======================  ==========  =========== ===========
 
-Label sections appropriately, see existing labs if further guidance is required. Section titles should begin with present tense verbs to queue what is being done in each section. Use consistent markup for titles, subtitles, sub-subtitles, etc. The markup in the example can serve as a guide but other characters can be used within a given workshop, as long as they are consistent. Other than lab titles (that need to follow a certain linear progression) avoid numbering steps.
+We start by creating a Remote Site and then a Protection Domain.
 
-Below are examples of standards we should strive to maintain in writing lab guides. *Italics* is used to indicate when information of values external to the lab guide are referenced. **Bold** is used to reference words and phrases in the UI. **Bold** should also be used to highlight the key name in lists containing key/value pairs as shown below. The **>** character is used to show a reasonable progression of clicks, such as traversing a drop down menu. When appropriate, try to consolidate short, simple tasks. ``Literals`` should be used for file paths.
+During this module we will perform:
 
-Actions should end with a period, or optionally with a colon as in the case of displaying a list of fields that need to be populated. Keep the language consistent: open, click/select, fill out, log in, and execute.
+- Create a remote site
+- Create a Protection Domain (PD)
+- Test the replication by taking a snapshot
+- **TBC:** Restore the VM on the receiving CE cluster
 
-Use the **figure** directive to include images in your lab guide or appendix. Image files should be included within the Git repository, within an **images** subdirectory within each lab subdirectory.
+Remote site setup
+-----------------
 
------------------------------------------------------
+To get A-Sync running we firstly need to define a remote site. Click on **Data Protection** in de main screen bar.
 
-Open \https://<*NUTANIX-CLUSTER-IP*>:9440 in your browser to access Prism. Log in as a user with administrative priveleges.
+.. figure:: images/00.png
+
+On the right-hand side click on the **+ Remote Site** and then on **Physical Cluster** as the sync partner is a “physical cluster”.
 
 .. figure:: images/1.png
 
-Click **Network Config > User VM Interfaces > + Create Network**.
+.. note:: The screenshots further on in this document use **CE1** as the source and the **CE2** cluster as the remote side for example reasons!
+
+In the **Remote Site** screen type the information of the partner cluster. Give the remote site a name which makes it user friendly and provide the **ADDRESSES** of the partner cluster and click **Add Site**.
+
+.. note::  In real live production environments use the **External IP address** of the cluster. In our demo environment we use the IP address of the CVM as we only have one node in the Nutanix Cluster. Make notice of the orange text in the **Remote Site** dialog!!!
 
 .. figure:: images/2.png
 
-Select **Enable IP Address Management** and fill out the following fields:
-
-  - **Name** - VM VLAN
-  - **VLAN ID** - *Refer to your Environment Details Worksheet*
-  - **Network IP Address/Prefix Length** - *Refer to your Environment Details Worksheet*
-  - **Gateway IP Address** - *Refer to your Environment Details Worksheet*
-  - **Domain Name Servers** - *Refer to your Environment Details Worksheet*
+The below dropped down screen should been seen.
 
 .. figure:: images/3.png
 
-Click **Submit > Save**.
+The screen, after clicking on the **Save** button should show a green text stating that the Remote site has been created successfully. Scroll down and leave all setting default till you see **NETWORK MAPPING** and **VSTORE NAME MAPPING** as we need to tell the cluster how to map these two.
+
+.. figure:: images/4.png
+
+.. figure:: images/5.png
+
+.. figure:: images/6.png
+
+For **NETWORK MAPPING** we need to tell the cluster how to map the networks on both cluster to each other. This has to be done if the networks on both cluster are not named the same. In our environment we use the earlier created networks **AHV-vlan0** on both sides.
+
+.. figure:: images/7.png
+
+For the **VSTORE NAME MAPPING** we need to tell the mapping between **Source VStore** and **Destination VStore**. In our environments we need to change these to the below screenshot. Again use your parameters according to the table earlier. As *example* in the screenshot **vms-ce2 on ce2 is mapped to DR-vms-ce2 on the ce1 cluster**.
+
+.. figure:: images/8.png
+
+.. note:: **Now repeat these steps for the other CE2 cluster. Only then replication can work. So you need to create a "cross-link" between clusters**.
+
+.. note:: Open both clusters in a browser with each cluster in its own screen or tab to make life easy.
+
+After creation of the Remote Site the below screenshot should be shown where you see the settings which you have created earlier. If you don’t see this, click on the **Table** view and then on **Remote Site**.
+
+.. figure:: images/9.png
+
+After selecting the Remote Site you just created you should be able to use the **Test Connection** button. If you’ve created the remote site correctly, you should see a green checkmark left to the button like below screenshot.
+
+.. figure:: images/10.png
+
+.. figure:: images/11.png
+
+
+Creating a Protection Domain
+----------------------------
+
+When clicking on the **Async DR** button there should not be shown anything.
+
+.. figure:: images/12.png
+
+On the right hand-side of the screen click on the **+ Protection Domain** and the on **Async DR**.
+
+.. figure:: images/13.png
+
+A new screen appears in which a name is asked for. Give the **Protection Domain** a useful name like CE1-CE2 and click the **Create** button.
+
+.. figure:: images/14.png
+
+The next phase will be to assign VM’s to the **Protection Domain**. Select the **ub-srv-cex** VM which you created earlier and click on the **Protect Selected** VMs button.
+
+.. figure:: images/15.png
+ 
+This should end up in a screen like below.
+
+.. figure:: images/16.png
+
+Click the **Next** button.
+
+Now we need to tell the cluster according to which schedule it has to make snapshots and should they be replicated to another remote site. Click the **New Schedule** button.
+
+.. figure:: images/17.png
+
+Try to create a repeatable time smaller than 60 minutes like below.
+
+.. figure:: images/18.png
+
+This should return an error as soon as you click on another parameter in the top of the schedule.
+
+.. figure:: images/19.png
+
+.. note:: The lowest number which can be set in the minutes is 60 minutes!
+
+.. figure:: images/20.png
+
+Set the parameters according to above screenshot and click the **Create Schedule** button.
+This should result in a screen just like below.
+
+.. figure:: images/21.png
+
+Click the **Close** button to close the creation of the Protection Domain.
+ 
+Test the Replication
+--------------------
+
+To test all simple click on the **Async DR** button and select the protection domain we’ve just created.
+
+.. figure:: images/22.png
+
+The **Take Snapshot** button should now be available. Click this button.
+
+.. figure:: images/23.png
+
+Now let’s create a snapshot of the VM in the selected protection domain and set the settings to the below screenshot.
+
+.. figure:: images/24.png
+
+This will result in a snapshot be create, replicated to the remote site, scheduled now and with a retention of 1 day. Don’t forget to select the **REMOTE SITES** otherwise there will only be a local snapshot created. Click on **Save** when done.
+
+That click should show a notification stating that the schedule has been created.
+
+.. figure:: images/25.png
+
+Select the protection domain again and then look at the **Replications** tab. There should be a line stating what it is doing.
+
+.. figure:: images/26.png
+
+If the replication has worked and is completed, there will be in the same tab of **Replications** a mentioning of this lower in that subscreen. Example is below.
+
+.. figure:: images/27.png
+
+Take a look at all tabs which are available.
+
+VMs tab
+
+.. figure:: images/28.png
+
+Schedules tab
+
+.. figure:: images/29.png
+
+Local Snapshots tab
+
+.. figure:: images/30.png
+
+Remote Snapshots tab
+
+.. figure:: images/31.png
+
+Alerts and Events tab.
+
+If it didn’t work, use the Alerts tab to see what is wrong.
+
+.. figure:: images/32.png
+.. figure:: images/33.png
+
+
+On the left hand-side of the bottom half of the screen you will find Summary information of the protection domain.
+
+.. figure:: images/34.png
+
+-------------
 
 Takeaways
 +++++++++
 
-- Here is where we summarize any key takeaways from the module
-- Such as how a Nutanix feature used in the lab delivers value
-- Or highlighting a differentiator
+- Easy setup of Protecting VMs and replicating between clusters in different GEOs
+- VM based replication. Not storage based.
+- Easy rotating possibilities between local and remote snapshots

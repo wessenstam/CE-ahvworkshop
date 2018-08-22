@@ -10,6 +10,8 @@ Overview
 
 To have VMs talking to the outside world as well as to eachother, we need to configure networking. This module is about how to setup networking and have a managed network configuration to it.
 
+----------
+
 Create a virtual network
 ++++++++++++++++++++++
 
@@ -67,7 +69,7 @@ Create at least three extra networks for VLANs 10,21 and 100 using the above met
 
 .. note:: After creating the networks, all network configurations will be \"pushed\" to all the current and new AHV nodes in the cluster. **Nothing** needs to be done.
 
------------------------------------------------------
+--------------------------------
 
 Takeaways
 +++++++++

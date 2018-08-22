@@ -8,44 +8,32 @@ VM Cloning
 Overview
 ++++++++
 
-Here is where we provide a high level description of what the user will be doing during this module. We want to frame why this content is relevant to an SE/Services Consultant and what we expect them to understand after completing the lab.
+This part of the workshop is showing how you can clone VMs via the PRISM interface. In a later stage of the workshop we will be cloning VMs using a script.
 
-Using Text and Figures
-++++++++++++++++++++++
+-----------
 
-Label sections appropriately, see existing labs if further guidance is required. Section titles should begin with present tense verbs to queue what is being done in each section. Use consistent markup for titles, subtitles, sub-subtitles, etc. The markup in the example can serve as a guide but other characters can be used within a given workshop, as long as they are consistent. Other than lab titles (that need to follow a certain linear progression) avoid numbering steps.
+Clone a VM
+++++++++++
 
-Below are examples of standards we should strive to maintain in writing lab guides. *Italics* is used to indicate when information of values external to the lab guide are referenced. **Bold** is used to reference words and phrases in the UI. **Bold** should also be used to highlight the key name in lists containing key/value pairs as shown below. The **>** character is used to show a reasonable progression of clicks, such as traversing a drop down menu. When appropriate, try to consolidate short, simple tasks. ``Literals`` should be used for file paths.
+Let’s clone a VM using the PRISM interface. Click the **Clone** button kin the PRISM interface.
 
-Actions should end with a period, or optionally with a colon as in the case of displaying a list of fields that need to be populated. Keep the language consistent: open, click/select, fill out, log in, and execute.
+.. figure:: images/vmclone_0001.png
 
-Use the **figure** directive to include images in your lab guide or appendix. Image files should be included within the Git repository, within an **images** subdirectory within each lab subdirectory.
+Use the below settings for the clone use for the name the original name and add **-clone** to it. Look at all options you can change!
 
------------------------------------------------------
+.. figure:: images/vmclone_0002.png
 
-Open \https://<*NUTANIX-CLUSTER-IP*>:9440 in your browser to access Prism. Log in as a user with administrative priveleges.
+After you have clicked the **Save** button the VM clone should appear in the PRISM UI like below.
 
-.. figure:: images/1.png
+.. figure:: images/vmclone_0003.png
 
-Click **Network Config > User VM Interfaces > + Create Network**.
+.. figure:: images/vmclone_0004.png
 
-.. figure:: images/2.png
+Look at all the options you can monitor after you’ve clicked on one of the VM’s. Information should be there for the first created and powered-on VM.
 
-Select **Enable IP Address Management** and fill out the following fields:
-
-  - **Name** - VM VLAN
-  - **VLAN ID** - *Refer to your Environment Details Worksheet*
-  - **Network IP Address/Prefix Length** - *Refer to your Environment Details Worksheet*
-  - **Gateway IP Address** - *Refer to your Environment Details Worksheet*
-  - **Domain Name Servers** - *Refer to your Environment Details Worksheet*
-
-.. figure:: images/3.png
-
-Click **Submit > Save**.
 
 Takeaways
 +++++++++
 
-- Here is where we summarize any key takeaways from the module
-- Such as how a Nutanix feature used in the lab delivers value
-- Or highlighting a differentiator
+- Easy cloning using the interface and changing characteristics for the clones
+- Fast cloning of VMs with defined parameters

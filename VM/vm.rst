@@ -10,6 +10,8 @@ Overview
 
 In this part of the lab you are going to create two VMs. One Linux and a Windows VM. You will see the differences between these two O/S installation processes.
 
+------------
+
 Creating a VM in AHV
 ++++++++++++++++++++
 
@@ -121,6 +123,10 @@ If yuo want, test all the buttons the righthand side of the VNC console to see w
 .. figure:: images/Sizer0043.png
 
 Run the installation. The machine will be used at a later stages of the workshop.
+
+----------
+
+.. _winvm:
 
 Creating a Windows VM
 +++++++++++++++++++++

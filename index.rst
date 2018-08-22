@@ -23,6 +23,12 @@
  Willem Essenstam
  willem@nutanix.com
 
+.. #TODO: Replication, Advanced Networking, Add a vSwitch, Create VM script, Clone VM script, Import into AHV, Export from AHV
+
+.. #TODO: Make sure the screenshots are still working for the current CE version (5.8.1 based)
+
+.. #TODO: Use IP address range of 192.168.81.0/24!! Create a setup document for the instructors.
+
 
 .. toctree::
   :maxdepth: 2
@@ -37,7 +43,6 @@
   VM_Clone/vm_clone
   Network_Visualization/network_viz
   AD_Integration/ad_integration
-  SSP/ssp
   SSR/ssr
   ABS/abs
 
@@ -56,10 +61,19 @@
   :hidden:
 
   Advanced_Networking/adv_network
-  Switch_add/switch_add
   VM_Script/vm_script
   VM_Clone_Script/vm_clone_script
   Import_into_AHV/import_into_ahv
+
+.. toctree::
+   :maxdepth: 2
+   :caption: To be created
+   :name: _todo
+   :hidden:
+
+   SSP/ssp
+   PC/pc
+
 
 
 
@@ -84,21 +98,21 @@ Th CE environment is a **free version** of the Nutanix software. It can be neste
 
 In each VLAN there are the following machines, IP addresses and their functions
 
-=================== =============== ==================
+=================== ============== ==================
 Name of the machine IP Address      Function
-=================== =============== ==================
-DC-1                192.168.100.1   Domain Controller
-WKS1                192.168.100.10  Workstation/RDP
-AHV-CE1             192.168.100.21  AHV for CE-1
-AHV-CE2             192.168.100.22  AHV for CE-2
-AHV-CE3             192.168.100.23  AHV for CE-3
-AHV-CE4             192.168.100.24  AHV for CE-4
-CVM-CE1             192.168.100.31  CVM for CE-1
-CVM-CE2             192.168.100.32  CVM for CE-2
-CVM-CE3             192.168.100.33  CVM for CE-3
-CVM-CE4             192.168.100.34  CVM for CE-4
-VyOS                192.168.100.254 NAT and PAT Router
-=================== =============== ==================
+=================== ============== ==================
+DC-1                192.168.81.3   Domain Controller
+WKS1                192.168.81.10  Workstation/RDP
+AHV-CE1             192.168.81.21  AHV for CE-1
+AHV-CE2             192.168.81.22  AHV for CE-2
+AHV-CE3             192.168.81.23  AHV for CE-3
+AHV-CE4             192.168.81.24  AHV for CE-4
+CVM-CE1             192.168.81.31  CVM for CE-1
+CVM-CE2             192.168.81.32  CVM for CE-2
+CVM-CE3             192.168.81.33  CVM for CE-3
+CVM-CE4             192.168.81.34  CVM for CE-4
+VyOS                192.168.81.254 NAT and PAT Router
+=================== ============== ==================
 
 CE Information
 ++++++++++++++

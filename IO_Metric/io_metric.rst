@@ -8,44 +8,31 @@ IO Metric
 Overview
 ++++++++
 
-Here is where we provide a high level description of what the user will be doing during this module. We want to frame why this content is relevant to an SE/Services Consultant and what we expect them to understand after completing the lab.
+IO Metric is a way to see what the IO distribution is for the VM. Also it can be used to see the latency and maybe the root cause for issues with a particular VM that is part of an application.
 
-Using Text and Figures
-++++++++++++++++++++++
+------------------
 
-Label sections appropriately, see existing labs if further guidance is required. Section titles should begin with present tense verbs to queue what is being done in each section. Use consistent markup for titles, subtitles, sub-subtitles, etc. The markup in the example can serve as a guide but other characters can be used within a given workshop, as long as they are consistent. Other than lab titles (that need to follow a certain linear progression) avoid numbering steps.
+Use IO Metric
++++++++++++++
 
-Below are examples of standards we should strive to maintain in writing lab guides. *Italics* is used to indicate when information of values external to the lab guide are referenced. **Bold** is used to reference words and phrases in the UI. **Bold** should also be used to highlight the key name in lists containing key/value pairs as shown below. The **>** character is used to show a reasonable progression of clicks, such as traversing a drop down menu. When appropriate, try to consolidate short, simple tasks. ``Literals`` should be used for file paths.
+During the installation of the Ubuntu server write and read actions will take place. The I/O metrics show what these reads and writes are.
 
-Actions should end with a period, or optionally with a colon as in the case of displaying a list of fields that need to be populated. Keep the language consistent: open, click/select, fill out, log in, and execute.
+Select the **ub-srv-<cluster-name>** and select the **I/O metrics** tab. The below screens show what happens during install
 
-Use the **figure** directive to include images in your lab guide or appendix. Image files should be included within the Git repository, within an **images** subdirectory within each lab subdirectory.
+.. figure:: images/iometric_1.png
+.. figure:: images/iometric_2.png
 
------------------------------------------------------
+After having provided all the parameters and Ubuntu is being installed the below screens appear. During the installation of the Ubuntu server select OpenSSH server and hit continue to run the packages for the openssh server installation.
 
-Open \https://<*NUTANIX-CLUSTER-IP*>:9440 in your browser to access Prism. Log in as a user with administrative priveleges.
+.. figure:: images/iometric_3.png
+.. figure:: images/iometric_4.png
 
-.. figure:: images/1.png
+If the machine is done with the installation. Power off the Ubuntu server.
 
-Click **Network Config > User VM Interfaces > + Create Network**.
-
-.. figure:: images/2.png
-
-Select **Enable IP Address Management** and fill out the following fields:
-
-  - **Name** - VM VLAN
-  - **VLAN ID** - *Refer to your Environment Details Worksheet*
-  - **Network IP Address/Prefix Length** - *Refer to your Environment Details Worksheet*
-  - **Gateway IP Address** - *Refer to your Environment Details Worksheet*
-  - **Domain Name Servers** - *Refer to your Environment Details Worksheet*
-
-.. figure:: images/3.png
-
-Click **Submit > Save**.
+-------------------
 
 Takeaways
 +++++++++
 
-- Here is where we summarize any key takeaways from the module
-- Such as how a Nutanix feature used in the lab delivers value
-- Or highlighting a differentiator
+- Easy visualization of issues with respect to disk operations.
+- Root cause analyses on slow applications based on multi layer applications.
