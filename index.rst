@@ -23,8 +23,13 @@
  Willem Essenstam
  willem@nutanix.com
 
-.. #TODO: Create VM script, Clone VM script, Import into AHV, Export from AHV
+.. #TODO: Create VM script, Clone VM script, Import into AHV, Export from AHV id:22
+ ----
+ <https://github.com/wessenstam/CE-ahvworkshop/issues/34>
+ Willem Essenstam
+ willem@nutanix.com
 
+<<<<<<< HEAD
 .. #TODO: Make sure the screenshots are still working for the current CE version (5.8.1 based) id:19
  ----
  <https://github.com/wessenstam/CE-ahvworkshop/issues/30>
@@ -34,6 +39,17 @@
 .. #TODO: Use IP address range of 192.168.81.0/24!! Create a setup document for the instructors. id:21
  ----
  <https://github.com/wessenstam/CE-ahvworkshop/issues/32>
+=======
+.. #TODO: Make sure the screenshots are still working for the current CE version (5.8.1 based) id:23
+ ----
+ <https://github.com/wessenstam/CE-ahvworkshop/issues/35>
+ Willem Essenstam
+ willem@nutanix.com
+
+.. #TODO: Use IP address range of 192.168.81.0/24!! Create a setup document for the instructors. id:24
+ ----
+ <https://github.com/wessenstam/CE-ahvworkshop/issues/36>
+>>>>>>> 4bc2c717cbd406b97e4e04f3fa6284c1091eec1c
  Willem Essenstam
  willem@nutanix.com
 
