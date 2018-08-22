@@ -23,7 +23,7 @@
  Willem Essenstam
  willem@nutanix.com
 
-.. #TODO: Replication, Advanced Networking, Add a vSwitch, Create VM script, Clone VM script, Import into AHV, Export from AHV
+.. #TODO: Create VM script, Clone VM script, Import into AHV, Export from AHV
 
 .. #TODO: Make sure the screenshots are still working for the current CE version (5.8.1 based)
 
@@ -90,6 +90,10 @@ What's New
 ++++++++++
 
 - Initial Version (6/27/18) Willlem Essenstam
+- Modules to do (22-08-2018) Willem Essenstam:
+  #. Create VM from a script
+  #. Clone a VM using scripts
+  #. Import into AHV
 
 Environmental overview
 ++++++++++++++++++++++
