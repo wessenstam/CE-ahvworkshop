@@ -25,9 +25,17 @@
 
 .. #TODO: Create VM script, Clone VM script, Import into AHV, Export from AHV
 
-.. #TODO: Make sure the screenshots are still working for the current CE version (5.8.1 based)
+.. #TODO: Make sure the screenshots are still working for the current CE version (5.8.1 based) id:19
+ ----
+ <https://github.com/wessenstam/CE-ahvworkshop/issues/30>
+ Willem Essenstam
+ willem@nutanix.com
 
-.. #TODO: Use IP address range of 192.168.81.0/24!! Create a setup document for the instructors.
+.. #TODO: Use IP address range of 192.168.81.0/24!! Create a setup document for the instructors. id:21
+ ----
+ <https://github.com/wessenstam/CE-ahvworkshop/issues/32>
+ Willem Essenstam
+ willem@nutanix.com
 
 
 .. toctree::
