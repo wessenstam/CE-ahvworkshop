@@ -23,15 +23,11 @@ Connect to the CVM using the IP address of your cluster by using Putty. Use **nu
 
 After the connection is successful type the following command to create a VM with 1GB of RAM, 1 vCPU and a 10GB disk. For demo purposes the CDROM and the NIC are not used but can be added if wanted.
 
-``for n in {1..5}
-do
-acli vm.create MyVM$n memory=1024M num_vcpus=1
-acli vm.disk_create MyVM$n create_size=10G container=vms-ce1
-done``
+``for n in {1..5}; do acli vm.create MyVM$n memory=1024M num_vcpus=1; acli vm.disk_create MyVM$n create_size=10G container=vms-ce1; done``
 
 .. figure:: images/vmscript_004.png
 
-This command should lead in having 5 VM’s named MyVM1 to MyVM5 all with the earlier mentioned parameters. The below screen shows all lines returned by the cluster.
+This command should lead to having 5 VM’s named MyVM1 to MyVM5 all with the earlier mentioned parameters. The below screen shows all lines returned by the cluster.
 
 .. figure:: images/vmscript_005.png
 
@@ -44,7 +40,7 @@ PRISM will show all just 5 newly EXTRA created VM’s
 VM Cloning
 ----------
 
-Before we can clone machines, we need to get some resources freed-up. So power done the earlier created clone using the UI named ub-srv-cex by using the ``acli vm.off`` command
+Before we can clone machines, we need to get some resources freed-up. So power done the earlier created clone using the UI named ub-srv-cex by using the ``acli vm.off`` command.
 
 .. figure:: images/vmscript_008.png
 
@@ -74,11 +70,9 @@ PRISM should show
 
 Let’s power on the first two just created VM’s by using ``acli vm.on MyVMClone[1..2]`` command. PRISM should show the VM’s with a green ball in front of the VM.
 
-.. figure:: images/vmscript_007.png
+.. figure:: images/vmscript_014.png
 
 Now let’s delete all earlier created VM by using the ``acli vm.delete MyVMClone*`` command using wildcards and answer the question asked with yes.
-
-.. figure:: images/vmscript_0014.png
 
 Only one VM should exist in the cluster.
 

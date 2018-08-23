@@ -85,8 +85,6 @@
 
   Advanced_Networking/adv_network
   VM_Script/vm_script
-  VM_Clone_Script/vm_clone_script
-  Import_into_AHV/import_into_ahv
 
 .. toctree::
    :maxdepth: 2
@@ -96,6 +94,8 @@
 
    SSP/ssp
    PC/pc
+   Import_into_AHV/import_into_ahv
+
 
 
 
