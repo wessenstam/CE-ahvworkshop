@@ -10,7 +10,7 @@ Overview
 
 This part of the workshop is to provide you the guidelines to setup the environment on ESXi virtualization. Reason for this hypervisor is that it can import OVAs quickly. AHV doens't have that supported yet. Also the CE needs to be created in a QCOW2, but that is for futures.
 
-The PowerPoint that goes with this workshop can be `downloaded here <PPT/presentation.pptx>`_
+The PowerPoint that goes with this workshop can be downloaded :download:`here <PPT/presentation.pptx>`
 
 
 Setup of the Environment
@@ -51,10 +51,12 @@ The following steps are for installaing and configuring the Windows VM for the e
 #. Install Windows Server 2012 R2 or higher like you would normally do.
 #. Change the name to DC1 -> Reboot as requested during this process
 #. Change the IP address with the following parameters:
+
   1. a static 192.168.82.3
   2. netmask 255.255.255.0
   3. gateway 192.168.81.254
   4. DNS servers 8.8.8.8 and 8.8.4.4
+
 #. Enable RDP access. For `Windows Server 2012 R2 <https://www.petri.com/enable-remote-desktop-windows-server-2012-for-remote-administration>`_ for `Windows Server 2016 <http://www.tomsitpro.com/articles/enable-remote-desktop-in-windows-server-2016,2-1102.html>`_.
 #. Disable the firewall. This article desribes `how <https://www.dell.com/support/article/us/en/19/sln156432/windows-server-how-to-properly-turn-off-the-windows-firewall-in-windows-server-2008-and-above?lang=en>`_
 #. Install the Domain Controller needed features. Name the domain ntnx.demo. For `Windows Server 2012 R2 <https://social.technet.microsoft.com/wiki/contents/articles/22622.building-your-first-domain-controller-on-2012-r2.aspx>`_ for `Windows Server 2016 <https://blogs.technet.microsoft.com/canitpro/2017/02/22/step-by-step-setting-up-active-directory-in-windows-server-2016/>`_. Use for passwords that are being asked **nutanix/4u**.
@@ -123,6 +125,8 @@ Log in to the VyOS from the console using **vyos** and **vyos** as the default u
 
 .. figure:: images/ilt_007.png
 
+.. _vyosconfig:
+
 .. note:: The follwing commands are an example and uses the outside world IP address (eth0) as 192.168.1.99. Make sure you know your range that you can use. Per environment you need one IP address that attendees can connect to.
 
 After loging in, run the following commands
@@ -143,7 +147,9 @@ After loging in, run the following commands
 
 At this stage you should be able ssh into the VyOS router on the defined eth0 IP address. In this example we defined 192.168.1.99. Use ``ssh vyos@192.168.1.99`` and use **vyos** as the password.
 
-To make it easier for the rest of the configuration, download this `file <Scripts/vyosconfig.txt>`_` and open it up in a text editor.
+To make it easier for the rest of the configuration, download this file :download:`here <Scripts/vyosconfig.txt>`
+
+and open it up in a text editor.
 
 .. figure:: images/ilt_009.png
 
@@ -170,6 +176,10 @@ Now if all went ok start a RDP session to the external IP address of the VyOS ro
 .. figure:: images/ilt_012.png
 
 .. figure:: images/ilt_013.png
+
+*Save the VyOS config for reusability*
+
+To save the full configuration use the following command sequences fram a ssh session ``show config comman`` this will list all the commands that you can reuse (copy and save to a text file) after you have setup the first steps (IP address and ssh service as mentioned here vyosconfig_)
 
 **CE installation**
 
