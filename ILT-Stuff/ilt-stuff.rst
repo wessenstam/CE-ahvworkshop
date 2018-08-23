@@ -30,7 +30,7 @@ VIP-CE1     192.168.81.41       First CE Cluster IP address
 VIP-CE2     192.168.81.42       Second CE Cluster IP address
 DIP-CE1     192.168.81.51       First CE Cluster Data Services IP address
 DIP-CE2     192.168.81.52       Second CE Cluster Data Services IP address
-VyOS        192.168.81.254      ROuter and PAT/NAT router (RDP forwarder)
+VyOS        192.168.81.254      Router and PAT/NAT router (RDP forwarder)
 ==========  =================== ===========================================
 
 Getting the VMs
@@ -59,7 +59,7 @@ The following steps are for installaing and configuring the Windows VM for the e
 
 #. Enable RDP access. For `Windows Server 2012 R2 <https://www.petri.com/enable-remote-desktop-windows-server-2012-for-remote-administration>`_ for `Windows Server 2016 <http://www.tomsitpro.com/articles/enable-remote-desktop-in-windows-server-2016,2-1102.html>`_.
 #. Disable the firewall. This article desribes `how <https://www.dell.com/support/article/us/en/19/sln156432/windows-server-how-to-properly-turn-off-the-windows-firewall-in-windows-server-2008-and-above?lang=en>`_
-#. Install the Domain Controller needed features. Name the domain ntnx.demo. For `Windows Server 2012 R2 <https://social.technet.microsoft.com/wiki/contents/articles/22622.building-your-first-domain-controller-on-2012-r2.aspx>`_ for `Windows Server 2016 <https://blogs.technet.microsoft.com/canitpro/2017/02/22/step-by-step-setting-up-active-directory-in-windows-server-2016/>`_. Use for passwords that are being asked **nutanix/4u**.
+#. Install the Domain Controller needed features. Name the domain **demo.ntnx**. For `Windows Server 2012 R2 <https://social.technet.microsoft.com/wiki/contents/articles/22622.building-your-first-domain-controller-on-2012-r2.aspx>`_ for `Windows Server 2016 <https://blogs.technet.microsoft.com/canitpro/2017/02/22/step-by-step-setting-up-active-directory-in-windows-server-2016/>`_. Use for passwords that are being asked **nutanix/4u**.
 #. Install `Putty SSH <https://the.earth.li/~sgtatham/putty/latest/w64/putty-64bit-0.70-installer.msi>`_
 #. Install `Adobe Reader <https://get.adobe.com/nl/reader/completion/?installer=Reader_DC_2018.011.20058_English_for_Windows&stype=7667&direct=true&standalone=1>`_
 
@@ -77,13 +77,13 @@ All commands can be found `here <https://support.microsoft.com/en-us/help/322684
 
 *Create the SSP OU*
 
-To create the SSP OU directly under the root of the AD use the following command: ``dsadd ou OU=SSP,dc=ntnx,dc=demo``.
+To create the SSP OU directly under the root of the AD use the following command: ``dsadd ou OU=SSP,dc=demo,dc=ntnx``.
 
 .. figure:: images/ilt_001.png
 
 *Create the four users*
 
-Creating the users is quite simple. Again open an elevated CMD window and run the folling command per user ``dsadd user cn=<USERNAME>,OU=SSP,dc=ntnx,dc=local -pwdneverexpires yes -disabled no -pwd "nutanix/4"``. Exchange **<USERNAME>** for *SSPAdmin, SSPUsers, SSPUser1, SSP-AD-Query*. That should lead to the following screen after you have run the command.
+Creating the users is quite simple. Again open an elevated CMD window and run the folling command per user ``dsadd user cn=<USERNAME>,OU=SSP,dc=demo,dc=ntnx -pwdneverexpires yes -disabled no -pwd "nutanix/4"``. Exchange **<USERNAME>** for *SSPAdmin, SSPUsers, SSPUser1, SSP-AD-Query*. That should lead to the following screen after you have run the command.
 
 .. figure:: images/ilt_002.png
 
@@ -127,7 +127,7 @@ Log in to the VyOS from the console using **vyos** and **vyos** as the default u
 
 .. _vyosconfig:
 
-.. note:: The follwing commands are an example and uses the outside world IP address (eth0) as 192.168.1.99. Make sure you know your range that you can use. Per environment you need one IP address that attendees can connect to.
+.. note:: The follwing commands are an example and uses the outside world IP address (eth0) as 192.168.1.99. Make sure you **know your range** that you can use. Per environment you need **one IP address** that attendees can connect to.
 
 After loging in, run the following commands
 
@@ -179,7 +179,7 @@ Now if all went ok start a RDP session to the external IP address of the VyOS ro
 
 *Save the VyOS config for reusability*
 
-To save the full configuration use the following command sequences fram a ssh session ``show config comman`` this will list all the commands that you can reuse (copy and save to a text file) after you have setup the first steps (IP address and ssh service as mentioned here vyosconfig_)
+.. note:: To save the full configuration use the following command sequences fram a ssh session ``show config comman`` this will list all the commands that you can reuse (copy and save to a text file) after you have setup the first steps (IP address and ssh service as mentioned here vyosconfig_)
 
 **CE installation**
 
