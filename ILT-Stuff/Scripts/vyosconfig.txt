@@ -1,0 +1,13 @@
+
+set nat destination rule 10 description 'Port Forward: RDP to 192.168.81.3'
+set nat destination rule 10 destination port '3389'
+set nat destination rule 10 inbound-interface 'eth0'
+set nat destination rule 10 protocol 'tcp'
+set nat destination rule 10 translation address '192.168.81.3'
+set nat source rule 100 outbound-interface 'eth0'
+set nat source rule 100 source address '192.168.81.0/24'
+set nat source rule 100 translation address 'masquerade'
+set service dns forwarding cache-size '0'
+set service dns forwarding listen-on 'eth1'
+set service dns forwarding name-server '8.8.8.8'
+set service dns forwarding name-server '8.8.4.4'
