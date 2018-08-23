@@ -113,7 +113,8 @@ What's New
 ++++++++++
 
 - Initial Version (6/27/18) Willlem Essenstam
-- Modules to do (22-08-2018) Willem Essenstam:
+- Modules to do (22-08-2018) Willem Essenstam
+
   #. Create VM from a script
   #. Clone a VM using scripts
   #. Import into AHV
