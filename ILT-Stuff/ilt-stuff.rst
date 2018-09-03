@@ -10,7 +10,7 @@ Overview
 
 This part of the workshop is to provide you the guidelines to setup the environment on ESXi virtualization. Reason for this hypervisor is that it can import OVAs quickly. AHV doens't have that supported yet. Also the CE needs to be created in a QCOW2, but that is for futures.
 
-The PowerPoint that goes with this workshop can be downloaded :download:`here <https://drive.google.com/open?id=1svIPhKPllhnVTyih6m89E0393d9xWerOQjLu883N_-A>`
+The PowerPoint that goes with this workshop can be downloaded `here <https://docs.google.com/presentation/d/1VolBCQtjmaSiKA1yKL2KCS2nOV-2JSPyjJehZnqGiww/edit?usp=sharing>`_
 
 
 Setup of the Environment
