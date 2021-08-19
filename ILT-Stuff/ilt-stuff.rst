@@ -103,7 +103,7 @@ Provide the password for the defined user.
 
 If all went well you get a warning error about certificates. This means the defined parameters worked. Your VM should now be ok for the workshop.
 
-.. figure:: images/ilt_006.png
+.. figure:: images/ilt_006.PNG
 
 
 **VyOS**
